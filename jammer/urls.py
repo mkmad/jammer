@@ -18,10 +18,9 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name="HomePage"),
     url(r'^music/', include('music.urls'), name='music'),
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^register/$', views.RegistrationView.as_view(), name='register'),
-    url(r'^login/$', views.LoginView.as_view(), name='login'),
+    url(r'^$', views.LoginView.as_view(), name='login'),
     url(r'^logout/$', views.LogoutView.as_view(), name='logout')
 ]

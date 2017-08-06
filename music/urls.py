@@ -2,6 +2,8 @@ from . import views
 from django.conf.urls import url
 
 urlpatterns = [
-    url(r'^$', views.index, name="MainPage"),
-    url(r'^profile/', views.profile, name="ProfilePage")
+    url(r'^profile/', views.ProfileView.as_view(),
+        name="ProfilePage"),
+    url(r'^feeds/', views.FeedsView.as_view(),
+        name="FeedsPage")
 ]
