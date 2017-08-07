@@ -1,7 +1,116 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-    <div class="container">
+{% load staticfiles %}
+<div class="container">
+    <div class="col-md-10 col-lg-offset-1 post-padding">
+    <div class="well">
+        <form class="form">
+            <h4>Whats in your mind</h4>
+            <div class="input-group text-center">
+                <input type="text" class="form-control input-lg">
+                <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
+            </div>
+        </form>
     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right">View all</a>
+            <h4>
+                <img src="http://lorempixel.com/180/180/people/9/" class="img-circle" width="3%"/>
+                {{username}}
+            </h4>
+        </div>
+        <div class="panel-body">
+            I am going to jamm tonight!!
+        </div>
+        <hr>
+        <form>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                </div>
+                <input type="text" class="form-control" placeholder="Add a comment..">
+            </div>
+        </form>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right">View all</a>
+            <h4>
+                <img src="http://lorempixel.com/180/180/people/9/" class="img-circle" width="3%"/>
+                {{username}}
+            </h4>
+        </div>
+        <div class="panel-body">
+            I am looking for someone who plays guitar
+        </div>
+        <hr>
+        <form>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                </div>
+                <input type="text" class="form-control" placeholder="Add a comment..">
+            </div>
+        </form>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right">View all</a>
+            <h4>
+                <img src="http://lorempixel.com/180/180/people/9/" class="img-circle" width="3%"/>
+                {{username}}
+            </h4>
+        </div>
+        <div class="panel-body">
+            This is my practice area!!
+        </div>
+        <hr>
+        <div class="panel-thumbnail">
+            <img src="{% static 'img/wall_image.jpg' %}" class="img-responsive center-block">
+        </div>
+        <form>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                </div>
+                <input type="text" class="form-control" placeholder="Add a comment..">
+            </div>
+        </form>
+
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right">View all</a>
+            <h4>
+                <img src="http://lorempixel.com/180/180/people/9/" class="img-circle" width="3%"/>
+                {{username}}
+            </h4>
+        </div>
+        <div class="panel-body">
+            Hey guys checkout my new cover!!
+        </div>
+        <hr>
+        <div class="panel-thumbnail embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.youtube.com/embed/WsptdUFthWI" allowfullscreen>
+            </iframe>
+        </div>
+        <form>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                </div>
+                <input type="text" class="form-control" placeholder="Add a comment..">
+            </div>
+        </form>
+
+    </div>
+
+    </div>
+</div>
 {% endblock %}

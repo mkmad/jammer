@@ -21,9 +21,8 @@ $(function () {
         });
 
         var contentString = '<div class="info-window">' +
-                '<h3>Info Window Content</h3>' +
+                '<h3>My Home</h3>' +
                 '<div class="info-content">' +
-                '<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>' +
                 '</div>' +
                 '</div>';
 
