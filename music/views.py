@@ -22,3 +22,10 @@ class FeedsView(ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {'username': request.session['user']})
+
+
+class LocationView(DetailView):
+    template_name = 'music/location.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'username': request.session['user']})

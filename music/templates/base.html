@@ -37,7 +37,16 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Google Maps Files -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfXmCHk3HVZiExT_Wzoe-qB_rn6nLNits"></script>
+
+    <script>
+        var markerImage = "{% static 'img/marker.png' %}";
+    </script>
     <script>
         $( function() {
         var availableTags = [
@@ -139,7 +148,7 @@
                             <a href="{% url 'FeedsPage' %}"><i class="fa fa-fw fa-rss"></i> Feeds</a>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-fw fa-map-marker"></i> Location</a>
+                            <a href="{% url 'LocationPage' %}"><i class="fa fa-fw fa-map-marker"></i> Location</a>
                         </li>
                     </ul>
                 </div>

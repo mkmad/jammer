@@ -5,5 +5,7 @@ urlpatterns = [
     url(r'^profile/', views.ProfileView.as_view(),
         name="ProfilePage"),
     url(r'^feeds/', views.FeedsView.as_view(),
-        name="FeedsPage")
+        name="FeedsPage"),
+    url(r'^location/', views.LocationView.as_view(),
+        name="LocationPage")
 ]
