@@ -1,15 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load staticfiles %}
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <div class="container">
-    <div class="user-profile">
-        <img align="left" class="user-image-lg" src="http://bombayoutdoors.com/wp-content/uploads/maple-leaves-branches.jpg" alt="Profile image example"/>
-        <img align="left" class="user-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example"/>
-        <div class="user-profile-text">
-            <h1>{{username}}</h1>
+    {% if error_message %}
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    <h3 align='center'>{{ error_message }}</h3>
+                  </div>
+                <div class="modal-body">
+                    <p align='center'> Valid file types are:  jpg, jpeg, png and gif
+                </div>
+            </div>
+            </div>
         </div>
+
+        <script>
+              $('#myModal').modal({
+                show: true
+                });
+        </script>
+    {% endif %}
+    <div class="user-profile">
+        <form action="{% url 'ProfilePage' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="image" align="left" id="background_pic" class="user-image-lg" src="{% static 'img/default_background.jpg' %}" alt="Profile image example"
+             onclick="return trigger_upload('background_pic_file')" title="Upload Picture"/>
+        <input type="file" id="background_pic_file" style="display: none;"
+               onchange="this.form.submit()" name="background_pic_form"/>
+        </form>
+    </div>
+    <div class="user-profile">
+        <form action="{% url 'ProfilePage' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="image" id="profile_pic" align="left" class="user-image-profile thumbnail" src="{% static 'img/default_profile.png' %}" alt="Profile image"
+               onclick="return trigger_upload('profile_pic_file')" title="Upload Picture"/>
+        <input type="file" id="profile_pic_file" style="display: none;"
+                onchange="this.form.submit()" name="profile_pic_form"/>
+        </form>
+    </div>
+    <div class="text glyphicon glyphicon-picture"></div>
+
+    <div class="user-profile-text">
+        <h1>{{username}}</h1>
     </div>
     <ul class="nav nav-tabs nav-tabs-custom">
         <li><a href="#">About</a></li>

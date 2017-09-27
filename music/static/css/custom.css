@@ -3,12 +3,26 @@ body
     font-family: 'Open Sans', sans-serif;
 }
 
-.user-profile img.user-image-lg{
+
+.user-image-lg{
     z-index: 0;
-    width: 95%;
-    height: 220px;
-    padding-left: 5%;
+    width: 90%;
+    height: 260px;
     padding-bottom: 2px;
+    margin-left:5%;
+    max-height: 260px;
+    margin-top: 6px;
+
+}
+
+.user-image-lg:hover{
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+    opacity: 1;
+    padding: 8px;
 }
 
 .user-image-profile
@@ -17,13 +31,38 @@ body
     z-index: 9;
     width: 20%;
     padding: 5px;
+    max-width: 500px;
+    height: 230px;
 }
 
-  .user-profile-text>h1{
+
+.user-image-profile:hover{
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+    opacity: 1;
+    padding: 7px;
+
+}
+
+.user-profile-text>h1{
     margin-left: 30%;
     margin-top: 5px;
+}
 
-  }
+.text{
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 55%;
+    left: 24%;
+  transform: translate(-50%, -50%);
+    visibility:hidden;
+}
+
+
 
 @media (max-width:768px)
 {

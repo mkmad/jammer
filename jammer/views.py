@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.http import HttpResponseRedirect
+
 
 from django.views.generic import View
 from .forms import UserForm

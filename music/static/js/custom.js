@@ -12,7 +12,7 @@ $(function () {
             panControl: false,
             scrollwheel: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
+        };
         var map = new google.maps.Map(mapCanvas, mapOptions);
         var marker = new google.maps.Marker({
             position: location,
@@ -40,3 +40,10 @@ $(function () {
     google.maps.event.addDomListener(window, 'load', initMap);
 
 });
+
+function trigger_upload(id) {
+    var input_file = document.getElementById(id);
+    input_file.click();
+    return false;
+}
+
