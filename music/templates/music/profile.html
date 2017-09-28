@@ -1,60 +1,150 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% load staticfiles %}
+    {% load staticfiles %}
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<div class="container">
-    {% if error_message %}
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">X</button>
-                    <h3 align='center'>{{ error_message }}</h3>
-                  </div>
-                <div class="modal-body">
-                    <p align='center'> Valid file types are:  jpg, jpeg, png and gif
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <div class="container">
+        {% if error_message %}
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">X</button>
+                            <h3 align='center'>{{ error_message }}</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p align='center'> Valid file types are:  jpg, jpeg, png and gif
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <script>
+                $('#myModal').modal({
+                    show: true
+                });
+            </script>
+        {% endif %}
+        {% if error_messages %}
+            <script>
+                alert('File upload failed');
+            </script>
+        {% endif %}
+        <div class="user-profile">
+            <form action="{% url 'ProfilePage' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if background_pic %}
+                    <input type="image" align="left" id="background_pic" class="user-image-lg" src="{{ background_pic }}" alt="Cover image example"
+                           onclick="return trigger_upload('background_pic_file')" title="Upload Picture"/>
+                {% else %}
+                    <input type="image" align="left" id="background_pic" class="user-image-lg" src="{% static 'img/default_background.jpg' %}" alt="Profile image example"
+                           onclick="return trigger_upload('background_pic_file')" title="Upload Picture"/>
+                {% endif %}
+                <input type="file" id="background_pic_file" style="display: none;"
+                       onchange="this.form.submit()" name="background_pic_form"/>
+            </form>
+        </div>
+        <div class="user-profile">
+            <form action="{% url 'ProfilePage' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if profile_pic %}
+                    <input type="image" id="profile_pic" align="left" class="user-image-profile thumbnail" src="{{ profile_pic }}" alt="Profile image"
+                           onclick="return trigger_upload('profile_pic_file')" title="Upload Picture"/>
+                {% else %}
+                    <input type="image" id="profile_pic" align="left" class="user-image-profile thumbnail" src="{% static 'img/default_profile.png' %}" alt="Profile image"
+                           onclick="return trigger_upload('profile_pic_file')" title="Upload Picture"/>
+                {% endif %}
+                <input type="file" id="profile_pic_file" style="display: none;"
+                       onchange="this.form.submit()" name="profile_pic_form"/>
+            </form>
+        </div>
+        <div class="text glyphicon glyphicon-picture"></div>
+
+        <div class="user-profile-text">
+            <h1>{{username}}</h1>
+        </div>
+        <ul class="nav nav-tabs nav-tabs-custom">
+            <li><a href="#about" data-toggle="tab">About</a></li>
+            <li><a href="#videos" data-toggle="tab">Videos</a></li>
+            <li><a href="#posts" data-toggle="tab">Posts</a></li>
+            <li><a href="#location" data-toggle="tab">Location</a></li>
+        </ul>
+
+        <div class="tab-content nav-content-custom">
+            <div class="tab-pane fade in active" id="about">
+                <p> Sample text for Roma : the novel of ancient Rome / Steven Saylor.
+
+
+                    Bibliographic record and links to related information available from the Library of Congress catalog
+
+
+                    Copyrighted sample text provided by the publisher and used with permission. May be incomplete or contain other coding.
+
+                    Counter
+                    Chapter One
+                    A Stop on the Salt Route
+                    1000 B.C.
+                    As they rounded a bend in the path that ran beside the river, Lara recognized the silhouette of a fig tree atop a nearby hill. The weather was hot and the days were long. The fig tree was in full leaf, but not yet bearing fruit.
+                    Soon Lara spotted other landmarks—an outcropping of limestone beside the path that had a silhouette like a man’s face, a marshy spot beside the river where the waterfowl were easily startled, a tall tree that looked like a man with his arms upraised. They were drawing near to the place where there was an island in the river. The island was a good spot to make camp. They would sleep on the island tonight.
+                    Lara had been back and forth along the river path many times in her short life. Her people had not created the path—it had always been there, like the river—but their deerskin-shod feet and the wooden wheels of their handcarts kept the path well worn. Lara’s people were salt traders, and their livelihood took them on a continual journey.
+                    At the mouth of the river, the little group of half a dozen intermingled families gathered salt from the great salt beds beside the sea. They groomed and sifted the salt and loaded it into handcarts. When the carts were full, most of the group would stay behind, taking shelter amid rocks and simple lean-tos, while a band of fifteen or so of the heartier members set out on the path that ran alongside the river.
+                    With their precious cargo of salt, the travelers crossed the coastal lowlands and traveled toward the mountains. But Lara’s people never reached the mountaintops; they traveled only as far as the foothills.
+                    Library of Congress subject headings for this publication:
+                    Rome -- History -- Fiction.</p>
+            </div>
+
+
+            <div class="tab-pane fade" id="videos">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Hey guys checkout my new cover!!
+                    </div>
+                    <hr>
+                    <div class="panel-thumbnail embed-responsive embed-responsive-16by9">
+                        <iframe src="https://www.youtube.com/embed/WsptdUFthWI" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <form>
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+                                <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Add a comment..">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="posts">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        I am going to jamm tonight!!
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        I am looking for someone who plays guitar
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        This is my practice area!!
+                    </div>
+                    <div class="panel-thumbnail">
+                        <img src="{% static 'img/wall_image.jpg' %}" class="img-responsive center-block">
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="location">
+                    <div id="map"></div>
             </div>
         </div>
-
-        <script>
-              $('#myModal').modal({
-                show: true
-                });
-        </script>
-    {% endif %}
-    <div class="user-profile">
-        <form action="{% url 'ProfilePage' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="image" align="left" id="background_pic" class="user-image-lg" src="{% static 'img/default_background.jpg' %}" alt="Profile image example"
-             onclick="return trigger_upload('background_pic_file')" title="Upload Picture"/>
-        <input type="file" id="background_pic_file" style="display: none;"
-               onchange="this.form.submit()" name="background_pic_form"/>
-        </form>
-    </div>
-    <div class="user-profile">
-        <form action="{% url 'ProfilePage' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="image" id="profile_pic" align="left" class="user-image-profile thumbnail" src="{% static 'img/default_profile.png' %}" alt="Profile image"
-               onclick="return trigger_upload('profile_pic_file')" title="Upload Picture"/>
-        <input type="file" id="profile_pic_file" style="display: none;"
-                onchange="this.form.submit()" name="profile_pic_form"/>
-        </form>
-    </div>
-    <div class="text glyphicon glyphicon-picture"></div>
-
-    <div class="user-profile-text">
-        <h1>{{username}}</h1>
-    </div>
-    <ul class="nav nav-tabs nav-tabs-custom">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Videos</a></li>
-        <li><a href="#">Posts</a></li>
-        <li><a href="#">Location</a></li>
-    </ul>
-</div> <!-- /container -->
+    </div> <!-- /container -->
 {% endblock %}

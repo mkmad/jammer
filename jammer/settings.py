@@ -121,4 +121,9 @@ LOGIN_REDIRECT_URL = '/music/'
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/Users/moha9491/projects/jammer/media/'
+MEDIA_ROOT = '/Users/moha9491/projects/jammer/music/media/'
+
+MEDIA_URL = '/media/'
+
+
+
